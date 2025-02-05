@@ -3025,24 +3025,24 @@ public class Blocks{
         duo = new ItemTurret("duo"){{
             requirements(Category.turret, with(Items.copper, 35));
             ammo(
-                Items.copper,  new BasicBulletType(2.5f, 9){{
-                    width = 7f;
-                    height = 9f;
-                    lifetime = 60f;
-                    ammoMultiplier = 2;
-                }},
-                Items.graphite, new BasicBulletType(3.5f, 18){{
-                    width = 9f;
-                    height = 12f;
-                    reloadMultiplier = 0.6f;
-                    ammoMultiplier = 4;
-                    lifetime = 60f;
-                }},
-                Items.silicon, new BasicBulletType(3f, 12){{
+                Items.copper,  new BasicBulletType(2f, 50){{
                     width = 7f;
                     height = 9f;
                     homingPower = 0.1f;
-                    reloadMultiplier = 1.5f;
+                    lifetime = 60f;
+                    ammoMultiplier = 2;
+                }},
+                Items.graphite, new BasicBulletType(3f, 50){{
+                    width = 9f;
+                    height = 12f;
+                    homingPower = 0.1f;
+                    ammoMultiplier = 4;
+                    lifetime = 60f;
+                }},
+                Items.silicon, new BasicBulletType(2.5f, 50){{
+                    width = 7f;
+                    height = 9f;
+                    homingPower = 0.1f;
                     ammoMultiplier = 5;
                     lifetime = 60f;
                 }}
@@ -3066,7 +3066,7 @@ public class Blocks{
             recoil = 0.5f;
             shootY = 3f;
             reload = 20f;
-            range = 110;
+            range = 1200;
             shootCone = 15f;
             ammoUseEffect = Fx.casing1;
             health = 250;
