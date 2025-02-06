@@ -3278,7 +3278,7 @@ public class Blocks{
             shootCone = 50f;
             liquidCapacity = 10f;
             shootEffect = Fx.shootLiquid;
-            range = 110f;
+            range = 8*140f;
             scaledHealth = 250;
             flags = EnumSet.of(BlockFlag.turret, BlockFlag.extinguisher);
         }};
