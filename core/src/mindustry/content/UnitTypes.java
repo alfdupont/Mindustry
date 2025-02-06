@@ -98,19 +98,25 @@ public class UnitTypes{
         //region ground attack
 
         dagger = new UnitType("dagger"){{
-            speed = 0.5f;
+            speed = 2f;
             hitSize = 8f;
             health = 150;
+            range = 8*400f;
+            maxRange = 8*400f;
             weapons.add(new Weapon("large-weapon"){{
+                range = 8*400f;
+                maxRange = 8*400f;
                 reload = 13f;
                 x = 4f;
                 y = 2f;
                 top = false;
                 ejectEffect = Fx.casing1;
                 bullet = new BasicBulletType(2.5f, 9){{
+                    range = 8*400f;
+                    maxRange = 8*400f;
                     width = 7f;
                     height = 9f;
-                    lifetime = 60f;
+                    lifetime = 6000f;
                 }};
             }});
         }};
