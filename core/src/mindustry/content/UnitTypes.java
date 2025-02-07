@@ -618,20 +618,23 @@ public class UnitTypes{
                 reload = 24f;
                 shootCone = 180f;
                 ejectEffect = Fx.none;
-                shootSound = Sounds.explosion;
+                shootSound = Sounds.explosionbig;
                 x = shootY = 0f;
                 mirror = false;
+                lifetime = 250f;
                 bullet = new BulletType(){{
                     collidesTiles = false;
                     collides = false;
-                    hitSound = Sounds.explosion;
-
+                    hitSound = Sounds.explosionbig;
+                    pierce = true;
                     rangeOverride = 30f;
-                    hitEffect = Fx.pulverize;
+                    fragSpread = 1200f;
+                    lifetime = 250f;
+                    hitEffect = Fx.reactorExplosion;
                     speed = 0f;
-                    splashDamageRadius = 55f;
+                    splashDamageRadius = 1200f;
                     instantDisappear = true;
-                    splashDamage = 90f;
+                    splashDamage = 900f;
                     killShooter = true;
                     hittable = false;
                     collidesAir = true;
