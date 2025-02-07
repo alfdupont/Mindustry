@@ -111,7 +111,7 @@ public class UnitTypes{
                 y = 2f;
                 top = false;
                 ejectEffect = Fx.casing1;
-                bullet = new BasicBulletType(2.5f, 9){{
+                bullet = new BasicBulletType(2.5f, 1500){{
                     range = 8*400f;
                     maxRange = 8*400f;
                     width = 7f;
