@@ -103,6 +103,7 @@ public class UnitTypes{
             health = 150;
             range = 8*400f;
             maxRange = 8*400f;
+            canBoost = true;
             weapons.add(new Weapon("large-weapon"){{
                 range = 8*400f;
                 maxRange = 8*400f;
@@ -111,7 +112,7 @@ public class UnitTypes{
                 y = 2f;
                 top = false;
                 ejectEffect = Fx.casing1;
-                bullet = new BasicBulletType(2.5f, 1500){{
+                bullet = new BasicBulletType(2.5f, 10000){{
                     range = 8*400f;
                     maxRange = 8*400f;
                     width = 7f;
