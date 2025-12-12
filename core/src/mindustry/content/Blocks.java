@@ -3256,21 +3256,18 @@ public class Blocks{
             ammo(
                 Liquids.water,new LiquidBulletType(Liquids.water){{
                     knockback = 0.7f;
-                    drag = 0.01f;
                     layer = Layer.bullet - 2f;
                 }},
                 Liquids.slag, new LiquidBulletType(Liquids.slag){{
                     damage = 4;
-                    drag = 0.01f;
                 }},
                 Liquids.cryofluid, new LiquidBulletType(Liquids.cryofluid){{
-                    drag = 0.01f;
                 }},
                 Liquids.oil, new LiquidBulletType(Liquids.oil){{
-                    drag = 0.01f;
                     layer = Layer.bullet - 2f;
                 }}
             );
+            drag = 0f;
             size = 2;
             recoil = 0f;
             reload = 3f;

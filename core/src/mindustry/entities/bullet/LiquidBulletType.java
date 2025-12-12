@@ -37,7 +37,7 @@ public class LiquidBulletType extends BulletType{
         hitEffect = Fx.hitLiquid;
         smokeEffect = Fx.none;
         shootEffect = Fx.none;
-        drag = 0.001f;
+        drag = 0.f;
         knockback = 0.55f;
         displayAmmoMultiplier = false;
     }
