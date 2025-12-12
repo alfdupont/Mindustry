@@ -3257,17 +3257,20 @@ public class Blocks{
                 Liquids.water,new LiquidBulletType(Liquids.water){{
                     knockback = 0.7f;
                     layer = Layer.bullet - 2f;
+                    drag = 0f;
                 }},
                 Liquids.slag, new LiquidBulletType(Liquids.slag){{
                     damage = 4;
+                    drag = 0f;
                 }},
                 Liquids.cryofluid, new LiquidBulletType(Liquids.cryofluid){{
+                    drag = 0f;
                 }},
                 Liquids.oil, new LiquidBulletType(Liquids.oil){{
                     layer = Layer.bullet - 2f;
+                    drag = 0f;
                 }}
             );
-            drag = 0f;
             size = 2;
             recoil = 0f;
             reload = 3f;
