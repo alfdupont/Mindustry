@@ -764,5 +764,8 @@ public class SerpuloTechTree{
                 });
             });
         });
+
+        //Straight-line campaign modification: drop all objectives so nothing requires sector captures or other research.
+        Planets.serpulo.techTree.each(node -> node.objectives.clear());
     }
 }

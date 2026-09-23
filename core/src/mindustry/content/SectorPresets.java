@@ -1,5 +1,7 @@
 package mindustry.content;
 
+import arc.math.geom.*;
+import arc.util.*;
 import mindustry.maps.*;
 import mindustry.type.*;
 
@@ -159,6 +161,44 @@ public class SectorPresets{
         }};
 
         SectorSubmissions.registerSectors();
+
+        //Straight-line campaign modifications:
+
+        //Every Serpulo sector is unlocked by default, so nothing is gated behind captures.
+        for(Sector s : serpulo.sectors){
+            if(s.preset != null){
+                s.preset.alwaysUnlocked = true;
+            }
+        }
+
+        //Move Ground Zero to the sector directly "above" (north of) the Planetary Launch Terminal,
+        //so the campaign can be played in one straight line from core to core.
+        Sector terminal = planetaryTerminal.sector;
+        if(terminal != null){
+            //"up" in planet view is world +Y; project it onto the tangent plane of the terminal's cell.
+            Vec3 pv = terminal.tile.v;
+            Vec3 up = Tmp.v31.set(0f, 1f, 0f).sub(Tmp.v32.set(pv).scl(pv.y)).nor();
+
+            Sector above = null;
+            float best = 0f;
+            for(Sector s : terminal.near()){
+                //skip cells holding another preset or generating an enemy base
+                if(s.preset != null || s.generateEnemyBase) continue;
+                float d = Tmp.v33.set(s.tile.v).sub(pv).dot(up);
+                if(d > best){
+                    best = d;
+                    above = s;
+                }
+            }
+
+            if(above != null){
+                Sector old = groundZero.sector;
+                //override = true skips the planet-data remap, pinning ground zero to the calculated cell
+                groundZero.initialize(serpulo, above.id, true);
+                if(old != null && old.preset == groundZero) old.preset = null;
+                serpulo.startSector = above.id;
+            }
+        }
 
         //endregion
         //region erekir
