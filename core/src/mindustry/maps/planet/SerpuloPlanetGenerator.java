@@ -88,8 +88,9 @@ public class SerpuloPlanetGenerator extends PlanetGenerator{
         return true;
     }
 
+    //Straight-line campaign modification: any core (shard or better) can launch to adjacent sectors, not only foundations.
     public boolean allowNumberedLaunch(Sector s){
-        return s.hasBase() && !s.isAttacked() && (s.info.bestCoreType.size >= 4 || s.isBeingPlayed() && state.rules.defaultTeam.cores().contains(b -> b.block.size >= 4));
+        return s.hasBase() && !s.isAttacked() && (s.info.bestCoreType.size >= 3 || s.isBeingPlayed() && state.rules.defaultTeam.cores().contains(b -> b.block.size >= 3));
     }
 
     @Override
@@ -116,7 +117,8 @@ public class SerpuloPlanetGenerator extends PlanetGenerator{
             if(hovered.isShielded()){
                 out.append("[red]").append(Iconc.defense).append("[]").append(Core.bundle.get("sector.shielded"));
             }else{
-                out.append("[red]").append(Iconc.cancel).append("[]").append(Blocks.coreFoundation.emoji()).append(Core.bundle.get("sector.foundationrequired"));
+                //any core can launch now, so the only remaining reason is the nearby base being under attack
+                out.append("[red]").append(Iconc.warning).append("[] ").append(Core.bundle.get("sectors.underattack"));
             }
         }else{
             super.getLockedText(hovered, out);
