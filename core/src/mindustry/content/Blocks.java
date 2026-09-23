@@ -2170,7 +2170,10 @@ public class Blocks{
             size = 3;
             itemCapacity = 120;
             reload = 200f;
-            range = 440f;
+            //Long-range mass driver modification: 200 tile range. Bolt lifetime must cover the trip
+            //at bulletSpeed 5.5 (1600 / 5.5 ≈ 291 ticks) or payload drops mid-flight.
+            range = 1600f;
+            bulletLifetime = 600f;
             consumePower(1.75f);
         }};
 
