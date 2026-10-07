@@ -12,6 +12,9 @@ import mindustry.gen.*;
 import mindustry.type.*;
 import mindustry.world.blocks.storage.*;
 
+import java.text.*;
+import java.util.*;
+
 import static mindustry.Vars.*;
 
 /** Updates and handles state of the campaign universe. Has no relevance to other gamemodes. */
@@ -71,6 +74,11 @@ public class Universe{
             if(turnCounter >= turnDuration){
                 turnCounter = 0;
                 runTurn();
+
+                if(!headless){
+                    Sounds.uiNotify.play();
+                    ui.announce("Recalcul shadow prod\n" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date()), 6f);
+                }
             }
 
             if(secondCounter >= 1){
