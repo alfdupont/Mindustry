@@ -3621,7 +3621,10 @@ public class Blocks{
             requirements(Category.turret, with(Items.copper, 50, Items.lead, 50));
             shootType = new LightningBulletType(){{
                 damage = 12;
-                lightningLength = 25;
+                //Long-range arc modification: the bolt must physically walk to the target, so
+                //100 steps of 50px (lightningLength/2) ≈ 4600px of reach covers the 4000px range.
+                lightningLength = 200;
+                lightningStep = 50f;
                 collidesAir = false;
                 ammoMultiplier = 1f;
 
@@ -3646,7 +3649,8 @@ public class Blocks{
             shootCone = 40f;
             rotateSpeed = 8f;
             targetAir = false;
-            range = 90f;
+            //500 tiles
+            range = 4000f;
             shootEffect = Fx.lightningShoot;
             heatColor = Color.red;
             recoil = 1f;

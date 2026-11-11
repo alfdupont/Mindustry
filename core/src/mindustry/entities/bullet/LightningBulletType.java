@@ -8,6 +8,9 @@ import mindustry.graphics.*;
 
 public class LightningBulletType extends BulletType{
 
+    /** Pixels the bolt covers per chain step. Values <= 0 keep the default short step; only bolts meant to reach far need more. */
+    public float lightningStep = -1f;
+
     public LightningBulletType(){
         damage = 1f;
         speed = 0f;
@@ -25,7 +28,8 @@ public class LightningBulletType extends BulletType{
 
     @Override
     protected float calculateRange(){
-        return (lightningLength + lightningLengthRand/2f) * 6f;
+        //a bolt walks lightningLength/2 steps; the default step is half of Lightning's 30px hit range
+        return (lightningLength + lightningLengthRand/2f) * (lightningStep > 0f ? lightningStep/2f : 6f);
     }
 
     @Override
@@ -37,6 +41,6 @@ public class LightningBulletType extends BulletType{
     public void init(Bullet b){
         super.init(b);
 
-        Lightning.create(b, lightningColor, damage, b.x, b.y, b.rotation(), lightningLength + Mathf.random(lightningLengthRand));
+        Lightning.create(b, lightningColor, damage, b.x, b.y, b.rotation(), lightningLength + Mathf.random(lightningLengthRand), lightningStep);
     }
 }
